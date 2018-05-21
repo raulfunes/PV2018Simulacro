@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:panel id="pnlImagen" header="Tabla de Imagenes">
+            <p:growl id="mensajes" showDetail="true"/>
+            <h:form id="frmCargaImagen" enctype="multipart/form-data">
+                <h:panelGrid id="tblGridCargaImagen" columns="2">
+                    <p:outputLabel for="img" value="Imagen : "/>
+                    <p:fileUpload id="img" value="#{imagenFormBean.file}" mode="simple" invalidFileMessage="No puedo cargar ese archivo"/>
+                    <p:commandButton id="btnGuardarImagen" value="GUARDAR" update="tblMuestraImagen" ajax="false" actionListener="#{imagenFormBean.agregarImagen()}"/>
+                    
+                    <p:panel id="pnlMuestraImagen">
+                        <p:graphicImage width="100" value="#{imagenFormBean.imagenSubida}" height="100" cache="false" alt="Imagen no Disponible"/>
+                    </p:panel>
+                </h:panelGrid>
+            </h:form>
+        </p:panel>
+    </h:body>
+</html>
+
